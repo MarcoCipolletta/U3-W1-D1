@@ -8,6 +8,7 @@ class User implements sim {
   lastName: string;
   credito: number = 0;
   numeroChiamate: number = 0;
+
   constructor(_name: string, _lastName: string) {
     this.name = _name;
     this.lastName = _lastName;
@@ -16,11 +17,12 @@ class User implements sim {
     this.credito += soldi;
   }
   chiamata(minuti: number): void {
-    if (this.credito - minuti * 0.2 < 0) {
+    let costochiamata: number = minuti * 0.2;
+    if (this.credito - costochiamata < 0) {
       alert("devi effetuare la ricarica");
     } else {
       this.numeroChiamate += minuti;
-      this.credito -= minuti * 0.2;
+      this.credito -= costochiamata;
     }
   }
   chiama404(): number {
